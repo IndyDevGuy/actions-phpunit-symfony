@@ -8,7 +8,7 @@ if [ -z "$(ls)" ]; then
   exit 1
 fi
 
-if [ ! -d vendor/ ] || [ ! -f vendor/autoload.php ]; then
+if [ ! -d cns/vendor/ ] || [ ! -f cns/vendor/autoload.php ]; then
   echo "WARNING!!!: No autoload detected.";
   echo "Please add this snippet:
       - name: Install dependencies
@@ -16,7 +16,7 @@ if [ ! -d vendor/ ] || [ ! -f vendor/autoload.php ]; then
   exit 1
 fi
 
-if [[ ! -f vendor/bin/simple-phpunit ]]; then
+if [[ ! -f cns/vendor/bin/simple-phpunit ]]; then
   echo "ERROR: simple-phpunit is not found in «vendor/bin»"
   echo "Add «symfony/phpunit-bridge» as dev dependency"
   exit 1
@@ -32,6 +32,6 @@ chmod +x /usr/bin/composer
 
 echo "## Running PHPUnit"
 echo "PHP Version : ${PHP_FULL_VERSION}"
-./vendor/bin/simple-phpunit --version
+.cns/vendor/bin/simple-phpunit --version
 
-php -d memory_limit=-1 ./vendor/bin/simple-phpunit
+php -d memory_limit=-1 .cns/vendor/bin/simple-phpunit
